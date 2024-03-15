@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>About Huffman Coding</title>
+        <link type="text/css" rel="stylesheet" href="../assets/css/info.css">
+    </head>
+
+    <body>
+        <div id="back-div">
+            <a href="../index.html" class="links"> &lt;- Go Back </a>
+        </div>
+        <div id="react-view">
+            <div class="_2QGOj_" role="presentation">
+                <p><strong>Huffman coding</strong> is an algorithm for compressing data with the aim
+                    of reducing its size without losing any of the details. This algorithm was
+                    developed by <strong>David Huffman</strong>.</p>
+                <p><strong>Huffman coding</strong> is typically useful for the case where data that
+                    we want to compress has frequently occurring characters in it.</p>
+                <h3>How it works</h3>
+                <p>Let assume the string data given below is the data we want to compress -</p>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/4OqBIt2LDsppmM3bRbdUgF/6b69ee0753a0f7fee9f55acca0cc8824/image.png"
+                        alt="image" /></p>
+                <p>The length of the above string is 15 characters and each character occupies a
+                    space of 8 bits. Therefore, a total of 120 bits ( 8 bits x 15 characters ) is
+                    required to send this string over a network. We can reduce the size of the
+                    string to a smaller extent using Huffman Coding Algorithm.</p>
+                <p>In this algorithm first we create a tree using the frequencies of characters and
+                    then assign a code to each character. The same resulting tree is used for
+                    decoding once encoding is done.</p>
+                <p>Using the concept of prefix code, this algorithm avoids any ambiguity within the
+                    decoding process, i.e. a code assigned to any character shouldn’t be present
+                    within the prefix of the opposite code.</p>
+                <h3>Steps to Huffman Coding</h3>
+                <ol>
+                    <li>
+                        <p>First, we calculate the count of occurrences of each character in the
+                            string.</p>
+                    </li>
+                </ol>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/1jRm1vDw0AuFvvFWrKbtxc/33c7d0efb378a8f3eb3612982d775662/image.png"
+                        alt="image" /></p>
+                <ol start="2">
+                    <li>
+                        <p>Then we sort the characters in the above string in increasing order of
+                            the count of occurrence. Here we use PriorityQueue to store.</p>
+                    </li>
+                </ol>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/1YiWjRbR6CkVrHAOdkiwtf/57edc5fb9477dee8a1daed4dc8c2abed/image.png"
+                        alt="image" /></p>
+                <ol start="3">
+                    <li>
+                        <p>Now we mark every unique character as a Leaf Node.</p>
+                    </li>
+                    <li>
+                        <p>Let’s create an empty node n. Add characters having the lowest count of
+                            occurrence as the left child of n and second minimum count of occurrence
+                            as the right child of n, then assign the sum of the above two minimum
+                            frequencies to <strong>n</strong>.</p>
+                    </li>
+                </ol>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/2K0YSK2oaZ43O1E2bYPPPg/fd7a3742a43dc9423f6fd5a00d1fb94d/image.png"
+                        alt="image" /></p>
+                <ol start="5">
+                    <li>
+                        <p>Now remove these two minimum frequencies from Queue and append the sum
+                            into the list of frequencies.</p>
+                    </li>
+                    <li>
+                        <p>Add node <strong>n</strong> into the tree.</p>
+                    </li>
+                    <li>
+                        <p>Just like we did for <strong>B</strong> and <strong>D</strong>, we repeat
+                            the same steps from 3 to 5 for the rest of the characters (
+                            <strong>A</strong> and <strong>C</strong> ). For A -
+                        </p>
+                    </li>
+                </ol>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/oxehlaQ0kTXpt8mSkaHvi/f1695d5167d84aa06aae3d5d1992e8fa/image.png"
+                        alt="image" /></p>
+                <p>Repeat for C -</p>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/2J11GE0sw0lv8gIB7Lf8jL/188a4b1dd00fcab5b6675904486190d9/image.png"
+                        alt="image" /></p>
+                <ol start="8">
+                    <li>
+                        <p>We got our resulting tree, now we assign <strong>0 to the left
+                                edge</strong> and <strong>1 to the right edge</strong> of every
+                            non-leaf node.</p>
+                    </li>
+                </ol>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/5nDaTAxXGsz7EkHTJdRXQM/f5e706852f9be9b09f8d33e3116923c6/image.png"
+                        alt="image" /></p>
+                <ol start="9">
+                    <li>
+                        <p>Now for generating codes of each character we traverse towards each leaf
+                            node representing some character from the root node and form code of it.
+                        </p>
+                    </li>
+                </ol>
+                <p>All the data we gathered until now is given below in tabular form -</p>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/5bIhU0sHUXC24UA7XbWUxB/c13f782153f34adae3de65c7111649c2/image.png"
+                        alt="image" /></p>
+                <p>Before compressing the total size of the string was <strong>120 bits.</strong>
+                    After compression that size was reduced to <strong>75 bits</strong> (28 bits +
+                    15 bits + 32 bits).</p>
+                <h3>Steps to Huffman Decoding</h3>
+                <p>To decode any code, we take the code and traverse it in the tree from the root
+                    node to the leaf node, each code will make us reach a unique character.</p>
+                <p>Let assume code <strong>101</strong> needs to be decoded, for this we will
+                    traverse from the root as given below -</p>
+                <p><img src="//images.contentful.com/piwi0eufbb2g/5qRisLjN9SRcvx04F0gfAq/5c16753d8f0d5c9cca21b650d2badbfd/image.png"
+                        alt="image" /></p>
+                <p>As per the Huffman encoding algorithm, for <strong>every 1 we traverse towards
+                        the right child</strong> and <strong>for 0 we traverse towards the left
+                        one</strong>, if we follow this and traverse, we will <strong>reach leaf
+                        node 3 which represents D</strong>. Therefore, <strong>101 is decoded to
+                        D</strong>.</p>
+                <h3>Complexity</h3>
+                <ul>
+                    <li>
+                        <p>O(nlogn) complexity for encoding each character based on their frequency.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Getting minimum frequency from queue occurred 2*(n-1)times and its
+                            complexity is O(nlogn), so overall complexity is O(nlogn).</p>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+    </body>
+
+</html>

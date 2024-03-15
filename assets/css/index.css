@@ -1,0 +1,140 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.bigdiv {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.align {
+    margin-top: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+}
+
+.button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.text {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links:hover {
+    text-decoration: underline;
+}
+
+/* Custom Styling for Specific Elements */
+
+#heading {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+#step1 img,
+#step2 img,
+#step3 img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+#text1 {
+    color: #888;
+}
+#submitbtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#submitbtn:hover {
+    background-color: #218838;
+}
+
+#text4 button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#text4 button:hover {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+@media (max-width: 600px) {
+    .bigdiv {
+        padding: 10px;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    #step1 img,
+    #step2 img,
+    #step3 img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+
